@@ -1,7 +1,15 @@
 # Databricks notebook source
-import urllib.request
+import sys
 import os
+# Go two levels up to reach the project root
+project_root = os.path.abspath(os.path.join(os.getcwd(), "../.."))
+
+if project_root not in sys.path:
+    sys.path.append(project_root)
+
+import urllib.request
 import shutil
+from modules.data_loader.file_downloader import download_file
 
 try:
     # Construct the URL for the Parquet file corresponding to this month
